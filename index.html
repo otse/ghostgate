@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ghostgate</title>
+	<script type="module" src="js/ghostgate.js"></script>
+
+	<style>
+		@font-face {
+			font-family: 'Magic Cards';
+			src: url('Pelagiad.ttf') format('truetype');
+		}
+	</style>
+
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Itim&family=Macondo&display=swap');
+
+	body {
+		background-color: #1e1e1e;
+		color: #e0e0e0;
+		font-family: 'Magic Cards';
+		font-size: 16px;
+		margin: 0;
+		padding: 20px;
+		display: flex;
+		justify-content: center;
+	}
+
+	h0 {}
+
+	/* otse userface is apart from mw-menu */
+	otse-user-interface {
+		display: contents;
+		/* this means the element itself is not rendered, only its children are */
+		color: #cacaca;
+		font-family: 'Magic Cards';
+		font-size: 17px;
+		ttext-shadow: rgb(255 255 255) 0px 1px 0px, rgb(0 0 0) 0px -1px 0px;
+	}
+
+	otse-user-interface :is(input, select, button) {
+		background-color: transparent;
+		font-family: inherit;
+		border: 2px outset #854026;
+		color: #e0e0e0;
+		padding: 4px;
+		border-radius: 2px;
+		font-size: 17px;
+	}
+
+	otse-user-interface button {
+		cursor: pointer;
+		background-color: #aa9a00;
+	}
+
+	otse-user-interface button:hover {
+		background-color: #0a5a62;
+	}
+
+	#generationDialog,
+	#mainView {
+		background-color: #322f00;
+		background: url(img/rocks2.jpg);
+		background-size: 50%;
+		width: 700px;
+		padding: 20px;
+		border-radius: 8px;
+	}
+
+	#genericList {
+		overflow-y: auto;
+	}
+
+	#enemyList,
+	#genericList,
+	#mainViewArea {
+		padding: 2px;
+		border: 2px outset #953c00;
+	}
+
+	ul {
+		margin: 0.25rem 0;
+		padding-left: 1rem;
+	}
+
+	ul li {
+		list-style-type: none;
+		margin: 0.125rem 0;
+		padding: 0;
+	}
+
+	ul li .label {
+		cursor: pointer;
+	}
+
+	ul li .label.expanded {
+		ttext-decoration: underline;
+	}
+
+	li > div {
+		display: contents;
+	}
+
+	/* a otse tree set is a list of items that can be expanded to show more items */
+	ul.treeSet {
+		bbackground: rgba(0, 0, 0, 0.5);
+	}
+
+	ul li.dropdown {
+		position: relative;
+		display: flex;
+		cursor: pointer;
+		color: cyan;
+	}
+
+	ul li span {
+		text-wrap: nowrap;
+	}
+</style>
+
+<body>
+	<h0></h0>
+	<br />
+	<otse-user-interface>
+		<div id="generationDialog" otse-user-interface>
+			<h2>Ghostgate Options</h2>
+			<label for="islandName">Name for this generation:</label>
+			<input type="text" id="islandName" placeholder="Slavewind" value="Slavewind">
+
+			<label for="treeStyle">Tree Style:</label>
+			<select id="treeStyle">
+				<option value="oak">Oak</option>
+				<option value="pine">Pine</option>
+				<option value="palm">Palm</option>
+			</select>
+
+			<label>
+				<input type="checkbox" id="wildGrass">
+				Wild Grass
+			</label>
+
+			<button onclick="Ghostgate.generate()">Generate</button>
+		</div>
+	</otse-user-interface>
+
+	<div id="mainView" style="display:none;">
+		<div style="display:flex; gap:20px;">
+			<div id="genericList" style="flex:1;;">
+				<h0>Total Tree:</h0>
+				<ul id="fullTree" class="treeSet"></ul>
+
+			</div>
+			<div id="mainViewArea" style="flex:2;">
+				<h0>Island View</h0>
+				<p id="islandInfo"></p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function generateIsland() {
+
+		}
+	</script>
+</body>
+
+</html>
