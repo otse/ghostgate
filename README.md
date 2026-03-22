@@ -1,6 +1,6 @@
-# Ghostgate — Reimagining Vvardenfell
+# Ghostgate — Vvardenfell Simulator
 
-**Ghostgate** is an experimental world generator that reconstructs Vvardenfell in strange, uncanny, and playful ways. It’s less a game, more a sandbox for exploration, improvisation, and the art of mapmaking itself.
+**Ghostgate** is an experimental AI simulation of the original game. It's not just a simulation, you can change story and see how the world would have behaved if it had new Narrative.
 
 ---
 
@@ -10,26 +10,7 @@
 - **Setting:** Vvardenfell, fragmented and mutable  
 - **Theme:** Morrowind reinterpreted
 
----
-
-## 🎯 Objectives
-
-- **Explore:** Generate places that feel nostalgic but unpredictably new.  
-- **Experiment:** Create islands, towers, and tombs that defy expectations.  
-- **Demonstrate:** Show that dark fantasy worlds can be built casually, without complexity.  
-
----
-
-## 🖥️ Interfaces
-
-1. **Generation Dialog** – Start by defining your mutable world.  
-2. **Drop-down Exploration** – Navigate regions, buildings, and items like a living folder.  
-3. **World View** – Annotated, interactive lists of locations, creatures, and curiosities.  
-
-### How Exploration Works
-
-After generation, the interface is **mostly dropdown menus** reminiscent of a folder dungeon or interactive encyclopedia:
-
+The Tree View of the Game shows you:
 ```text
 Ashen Region > Telvanni Tower > Telvanni Master
-Chest > Levitation Scroll
+Chest > Levitation Scroll```
