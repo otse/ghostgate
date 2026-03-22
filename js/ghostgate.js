@@ -48,6 +48,14 @@ import Tree from './tree.js';
 			return name.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
 		},
 
+		regionClassName(regionName) {
+			const slug = regionName
+				.toLowerCase()
+				.replace(/[^a-z0-9]+/g, '-')
+				.replace(/^-+|-+$/g, '');
+			return `region-${slug}`;
+		},
+
 		setupEventListeners() {
 			// Add your event listeners here
 		},
@@ -76,13 +84,17 @@ import Tree from './tree.js';
 			for (const region in this.canonList) {
 				console.log('Log');
 
-				const tree = new Tree([], { name: region, className: 'tree treeSet' });
+				const tree = new Tree([], {
+					name: region,
+					className: 'tree',
+					labelClassName: this.regionClassName(region)
+				});
 				for (const settlement of this.canonList[region]) {
 
 					// tree.addItem(settlement.name);
 					const tree2 = new Tree([], {
 						name: settlement.name,
-						className: 'tree treeSet'
+						className: 'tree'
 					});
 					const building_ids = settlement.buildings;
 					
@@ -93,7 +105,7 @@ import Tree from './tree.js';
 							console.warn(' building ', buildingObject.instance.name);
 							const tree3 = new Tree([], {
 								name: buildingObject.instance.name,
-								className: 'tree treeSet'
+								className: 'tree'
 							});
 							tree2.addItem(tree3);
 

@@ -16,6 +16,9 @@ export default class Tree {
             label.appendChild(caret);
             label.style.cursor = 'pointer';
             label.classList.add('label');
+            if (options.labelClassName) {
+                label.classList.add(options.labelClassName);
+            }
 
             // Start collapsed and keep both hidden/display in sync for reliability.
 
