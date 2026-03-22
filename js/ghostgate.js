@@ -83,7 +83,6 @@ import Tree from './tree.js';
 			// Create items for the generic list
 			// Make drop down menus for each region in the canon list
 			const genericList = document.getElementById('genericList');
-			genericList.innerHTML = '';
 
 			for (const region in this.canonList) {
 				const tree = new Tree([], {
