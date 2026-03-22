@@ -31,9 +31,13 @@
 
 	body {
 		background-color: #1e1e1e;
+		background: url(img/mica-olsson-seydaneen-mrenders-010-jpeg.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 		color: #e0e0e0;
 		margin: 0;
-		padding: 20px;
+		padding: 50px;
 		display: flex;
 		justify-content: center;
 	}
@@ -85,8 +89,9 @@
 		background: url(img/RockRough0001_2_download600.jpg);
 		background-size: 30%;
 		width: 700px;
-		padding: 20px;
-		border-radius: 8px;
+		padding: 5px;
+		box-shadow: 0px 0px 10px black;
+		bborder-radius: 8px;
 	}
 
 	.thinBorder {
@@ -102,7 +107,8 @@
 			url(img/menu/grayscale_menu_thin_border_bottom.png),
 			url(img/menu/grayscale_menu_thin_border_left.png),
 			url(img/menu/grayscale_menu_thin_border_right.png);
-		background-size: /* full hd */
+		background-size:
+			/* full hd */
 			1px 1px,
 			1px 1px,
 			1px 1px,
@@ -111,7 +117,8 @@
 			256px 1px,
 			1px 256px,
 			1px 256px;
-		bbackground-size: /* 4k version */
+		bbackground-size:
+			/* 4k version */
 			2px 2px,
 			2px 2px,
 			2px 2px,
@@ -243,7 +250,8 @@
 
 	/* Scrollbar styling with Morrowind textures */
 	.innerScroll::-webkit-scrollbar {
-		width: 22px; /* 21 */
+		width: 22px;
+		/* 21 */
 	}
 
 	/* Hide duplicate scrollbar buttons (double-button mode) */
@@ -275,7 +283,7 @@
 	}
 
 	.innerScroll::-webkit-scrollbar-thumb {
-		background: #e2e2e2;
+		background: #ababab;
 		background-clip: content-box;
 		border: 3px solid transparent;
 		border-right: 4.5px solid transparent !important;
@@ -291,8 +299,8 @@
 		border: 2px solid transparent;
 		box-sizing: border-box;
 		background-color: transparent;
-	 }
-	 
+	}
+
 	/* Buttons: thin border frame + arrow icon (inline SVG for proper centering), inset 5px */
 	.innerScroll::-webkit-scrollbar-button:vertical:start {
 		background:
@@ -304,7 +312,7 @@
 			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
 			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
 			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 3L2 9h8z' fill='%23e2e2e2'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 3L2 9h8z' fill='%23ababab'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
 		bbackground-size: auto, auto, auto, auto, auto, auto, auto, auto, 15px 15px;
 		background-clip: content-box;
 		border-bottom-width: 0px;
@@ -320,7 +328,7 @@
 			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
 			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
 			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
-			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 9l4-6H2z' fill='%23e2e2e2'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 9l4-6H2z' fill='%23ababab'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
 		bbackground-size: auto, auto, auto, auto, auto, auto, auto, auto, 15px 15px;
 		background-clip: content-box;
 		border-top-width: 0px;
