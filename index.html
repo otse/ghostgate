@@ -40,14 +40,14 @@
 
 	:root {
 		/* muted light tones for dark-stone */
-		--region-ascadian-isles: #dee6d2;
-		--region-bitter-coast: #d9ddd1;
+		--region-ascadian-isles: #c8cec0;
+		--region-bitter-coast: #ced1c9;
 		--region-west-gash-x: #e9ddc5;
 		--region-ashlands-x: #e2bfac;
-		--region-molag-amur: #d8b8a8;
+		--region-molag-amur-x: #d8b8a8;
 		--region-azura-s-coast: #d7e0dd;
-		--region-grazelands: #e0e2c3;
-		--region-sheogorad: #e8e4d8;
+		--region-grazelands: #d1d7c8;
+		--region-sheogorad-x: #e8e4d8;
 	}
 
 	h0 {}
@@ -84,7 +84,7 @@
 		background-color: #322f00;
 		background: url(img/RockRough0001_2_download600.jpg);
 		background-size: 50%;
-		width: 700px;
+		width: 500px;
 		padding: 20px;
 		border-radius: 8px;
 	}
@@ -115,9 +115,16 @@
 		background-position: top left, top right, bottom left, bottom right, top, bottom, left, right;
 	}
 
+	.dark-stone-button {
+		background: url(img/RockRough0001_1_download600.jpg);
+		padding: 10px;
+
+	}
+
 	#genericList {
 		ccolor: cyan;
 		overflow-y: auto;
+		height: 200px;
 	}
 
 	#enemyList,
@@ -127,13 +134,14 @@
 	}
 
 	ul {
-		margin: 0.25rem 0;
+		mmargin: 0.25rem 0;
+		margin: 0;
 		padding-left: 1rem;
 	}
 
 	ul li {
 		list-style-type: none;
-		margin: 0.125rem 0;
+		mmargin: 0.125rem 0;
 		padding: 0;
 	}
 
@@ -143,9 +151,13 @@
 
 	/* Region flavor colors for top-level menu labels */
 	.label[class*="region-"] {
-		text-shadow: none;
+		ttext-shadow: none;
 		ffont-weight: 600;
-		letter-spacing: 0.02em;
+		lletter-spacing: 0.03em;
+	}
+
+	.label.tree-building {
+		color: #e7e7e7;
 	}
 
 	.label.region-ascadian-isles {
@@ -203,6 +215,170 @@
 	ul li span {
 		text-wrap: nowrap;
 	}
+
+	.innerScroll {
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+		/* Inset: scrollbar offset from inner window (top and sides) */
+		padding: 5px;
+	}
+
+	.innerScroll>* {
+		padding: 4px 8px;
+	}
+
+	/* Scrollbar styling with Morrowind textures */
+	.innerScroll::-webkit-scrollbar {
+		width: 30px;
+	}
+
+	/* Hide duplicate scrollbar buttons (double-button mode) */
+	.innerScroll::-webkit-scrollbar-button:vertical:start:increment,
+	.innerScroll::-webkit-scrollbar-button:vertical:end:decrement,
+	.innerScroll::-webkit-scrollbar-button:horizontal:start:increment,
+	.innerScroll::-webkit-scrollbar-button:horizontal:end:decrement {
+		display: none;
+	}
+
+	/* Track: thin border frame + vertbar fill, inset 5px from edge */
+	.innerScroll::-webkit-scrollbar-track {
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
+			url('img/menu/grayscale_menu_scroll_vertbar_top.png') no-repeat top center / 1px 1px,
+			url('img/menu/grayscale_menu_scroll_vertbar_bottom.png') no-repeat bottom center / 1px 1px;
+		background-clip: content-box;
+		border: 5px solid transparent;
+		border-top: 2px solid transparent;
+		border-bottom: 2px solid transparent;
+		box-sizing: border-box;
+	}
+
+	.innerScroll::-webkit-scrollbar-thumb {
+		background: #cacaca;
+		background-clip: content-box;
+		border: 8px solid transparent;
+		border-top: 4px solid transparent;
+		border-bottom: 5px solid transparent;
+		box-sizing: border-box;
+		border-radius: 4px;
+	}
+
+	/* Buttons: thin border frame + arrow icon (inline SVG for proper centering), inset 5px */
+	.innerScroll::-webkit-scrollbar-button:vertical:start {
+		height: 25px;
+		width: 25px;
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 3L2 9h8z' fill='%23cacaca'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
+		bbackground-size: auto, auto, auto, auto, auto, auto, auto, auto, 15px 15px;
+		background-clip: content-box;
+		border: 5px solid transparent;
+		border-bottom-width: 0px;
+		box-sizing: border-box;
+		background-color: transparent;
+	}
+
+	.innerScroll::-webkit-scrollbar-button:vertical:end {
+		height: 25px;
+		width: 25px;
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 9l4-6H2z' fill='%23cacaca'/%3E%3C/svg%3E") no-repeat center / 15px 15px;
+		bbackground-size: auto, auto, auto, auto, auto, auto, auto, auto, 15px 15px;
+		background-clip: content-box;
+		border: 5px solid transparent;
+		border-top-width: 0px;
+		box-sizing: border-box;
+		background-color: transparent;
+	}
+
+	/* Horizontal scrollbar */
+	.innerScroll::-webkit-scrollbar:horizontal {
+		height: 20px;
+	}
+
+	.innerScroll::-webkit-scrollbar-track:horizontal {
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right / 1px 1px,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom / 256px 1px,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left / 1px 256px,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right / 1px 256px,
+			url('img/menu/grayscale_menu_scroll_hortbar_top.png') no-repeat left center,
+			url('img/menu/grayscale_menu_scroll_hortbar_vert.png') repeat-x center,
+			url('img/menu/grayscale_menu_scroll_hortbar_bottom.png') no-repeat right center;
+		background-color: #0d0a08;
+	}
+
+	.innerScroll::-webkit-scrollbar-thumb:horizontal {
+		background: rgb(203, 203, 203);
+		background-clip: content-box;
+		border: 8px solid transparent;
+		box-sizing: border-box;
+		border-radius: 4px;
+	}
+
+	.innerScroll::-webkit-scrollbar-button:horizontal:start {
+		width: 20px;
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right,
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 6l6-4v8z' fill='%23cdaf75'/%3E%3C/svg%3E") no-repeat center;
+		background-size: auto, auto, auto, auto, auto, auto, auto, auto, 10px 10px;
+		background-clip: content-box;
+		border: 5px solid transparent;
+		box-sizing: border-box;
+		background-color: transparent;
+	}
+
+	.innerScroll::-webkit-scrollbar-button:horizontal:end {
+		width: 20px;
+		background:
+			url('img/menu/grayscale_menu_thin_border_top_left_corner.png') no-repeat top left,
+			url('img/menu/grayscale_menu_thin_border_top_right_corner.png') no-repeat top right,
+			url('img/menu/grayscale_menu_thin_border_bottom_left_corner.png') no-repeat bottom left,
+			url('img/menu/grayscale_menu_thin_border_bottom_right_corner.png') no-repeat bottom right,
+			url('img/menu/grayscale_menu_thin_border_top.png') repeat-x top,
+			url('img/menu/grayscale_menu_thin_border_bottom.png') repeat-x bottom,
+			url('img/menu/grayscale_menu_thin_border_left.png') repeat-y left,
+			url('img/menu/grayscale_menu_thin_border_right.png') repeat-y right,
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M9 6L3 2v8z' fill='%23cdaf75'/%3E%3C/svg%3E") no-repeat center;
+		background-size: auto, auto, auto, auto, auto, auto, auto, auto, 10px 10px;
+		background-clip: content-box;
+		border: 5px solid transparent;
+		box-sizing: border-box;
+		background-color: transparent;
+	}
 </style>
 
 <body>
@@ -232,7 +408,7 @@
 
 		<div id="mainView" style="display:none;">
 			<div style="display:flex; gap:20px;">
-				<div id="genericList" class="thinBorder" style="flex:1;;">
+				<div id="genericList" class="thinBorder innerScroll" style="flex:1;;">
 
 				</div>
 				<div id="mainViewArea" style="flex:2;">
