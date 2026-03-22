@@ -57,7 +57,7 @@ import Tree from './tree.js';
 		},
 
 		formatRegionName(regionName) {
-			return `Region:${regionName/*.toUpperCase()*/}`;
+			return `${regionName/*.toUpperCase()*/}`;
 		},
 
 		setupEventListeners() {
@@ -98,7 +98,7 @@ import Tree from './tree.js';
 						className: 'tree'
 					});
 					const building_ids = settlement.buildings;
-					
+
 					for (const building_id in building_ids) {
 						console.warn(' building_ids ', building_id);
 
@@ -108,6 +108,8 @@ import Tree from './tree.js';
 								name: buildingObject.instance.name,
 								labelClassName: 'tree-building'
 							});
+
+
 							tree2.addItem(tree3);
 							if (buildingObject.content.npcs.forced) {
 								for (const npc of buildingObject.content.npcs.forced) {
@@ -126,6 +128,9 @@ import Tree from './tree.js';
 					tree.addItem(tree2);
 				};
 				genericList.appendChild(tree.getElement());
+				const divider = document.createElement('div');
+				divider.className = 'menuDividerH';
+				genericList.appendChild(divider);
 
 			}
 
