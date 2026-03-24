@@ -116,11 +116,14 @@
 	}
 
 	.darkstone-window-content {
+		box-shadow: inset 0 0 10px rgb(81 81 81);
+		padding: 10px;
 		color: #e5e5e3;
+		color: #2d2d2d;
 		padding-top: calc(20px / 2);
 		gap: 10px;
 		display: flex;
-		flex-direction: column;
+		fflex-direction: column;
 		flex: 1 1 0;
 		min-height: 0;
 		overflow: hidden;
@@ -158,7 +161,7 @@
 	}
 
 	.darkstone-window {
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.50);
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.50);
 		position: fixed;
 		touch-action: none;
 		user-select: none;
@@ -169,7 +172,7 @@
 
 		background-image: url(img/RockRough0001_1_download600.jpg);
 		box-sizing: border-box;
-		padding: calc(20px /2) calc(20px / 2);
+		padding: calc(28px / 2) calc(8px / 2) calc(8px / 2);
 		min-width: 200px;
 		min-height: 120px;
 		overflow: hidden;
@@ -204,7 +207,7 @@
 			right,
 			top,
 			bottom,
-			center;
+			0 0;
 		background-size:
 			calc(30px /2) calc(28px / 2),
 			calc(31px / 2) calc(28px / 2),
