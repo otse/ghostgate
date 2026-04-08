@@ -32,7 +32,7 @@ export default class Wnd {
 
 		const dsWnd = clone.querySelector('.darkstone-wnd');
 
-		dsWnd.querySelector('.darkstone-wnd-title').textContent = title;
+		dsWnd.querySelector('.darkstone-wnd-title').innerHTML = `<span>${title}</span>`;
 
 		const contentContainer = dsWnd.querySelector('.darkstone-wnd-content');
 
