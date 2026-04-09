@@ -24,6 +24,14 @@ const RESIZE_HANDLES = ['n', 's', 'e', 'w', 'ne', 'nw', 'se', 'sw'];
 // A Mw Wnd
 export default class Wnd {
 
+	dsWnd = null;
+
+	moveTo(x, y) {
+		this.dsWnd.style.transform = `translate(${x}px, ${y}px)`;
+		this.dsWnd.setAttribute('data-x', x);
+		this.dsWnd.setAttribute('data-y', y);
+	}
+
 	constructor(title, content, options = {}) {
 		const darkstoneUI = document.querySelector('darkstone-user-interface');
 
@@ -31,6 +39,10 @@ export default class Wnd {
 		const clone = mwMenuTemplate.content.cloneNode(true);
 
 		const dsWnd = clone.querySelector('.darkstone-wnd');
+		this.dsWnd = dsWnd;
+
+		dsWnd.style.width = (options.width || 200) + 'px';
+		dsWnd.style.height = (options.height || 200) + 'px';
 
 		dsWnd.querySelector('.darkstone-wnd-title').innerHTML = `<span>${title}</span>`;
 
@@ -118,7 +130,8 @@ export default class Wnd {
 				},
 				modifiers: [
 					interact.modifiers.restrictSize({
-						min: { width: 100, height: 100 },
+						min: { width: options.minWidth || 100, height: 100 },
+						// max: { width: options.maxWidth || 500, height: 100 },
 					}),
 					interact.modifiers.restrictEdges({
 						outer: getGridRestriction,
