@@ -200,7 +200,7 @@ export const Sheogorad = {
 			genericList.appendChild(tree.getElement());
 
 			const divider = document.createElement('div');
-			divider.className = 'menuDividerH';
+			divider.className = 'stone-menu-divider';
 			genericList.appendChild(divider);
 		}
 
