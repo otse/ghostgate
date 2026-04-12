@@ -11,7 +11,7 @@
 	<script type="module" src="js/sheogorad.js"></script>
 
 	<link rel="stylesheet" href="messy.css">
-	<link rel="stylesheet" href="darkstone.css">
+	<link rel="stylesheet" href="stone.css">
 
 	<style>
 		@font-face {
@@ -38,22 +38,20 @@
 		justify-content: center;
 		align-items: center;
 		background-color: #1e1e1e;
-		background: url(img/mica-olsson-seydaneen-mrenders-010-jpeg.jpg);
-		-webkit-backdrop-filter: blur(2px);
-		backdrop-filter: blur(2px);
+		background: url(https://cdna.artstation.com/p/assets/images/images/022/972/972/large/dominik-zdenkovic-20191222-thu-bitter-coast3.jpg?1577548887);
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 		width: 100%;
 		height: 100%;
 		box-sizing: border-box;
-		color: #e0e0e0;
+		color: #f300ff;
 		margin: 0;
 		padding: 50px;
 	}
 
 	:root {
-		/* muted light tones for darkstone */
+		/* muted light tones for stone */
 		--region-ascadian-isles-x: #ccd4c1;
 		--region-bitter-coast-x: #c3d7cd;
 		--region-west-gash-x: #d5cfc2;
@@ -63,13 +61,14 @@
 		--region-grazelands-x: #d1d7c8;
 		--region-sheogorad-x: #c162bc;
 
+		--dark-text: #2e3132;
 		--text-blue: #6cacd5;
-		--title-bar-gradient-color: rgb(133 136 141 / 50%);
+		--title-bar-gradient-color: rgb(123 124 125 / 50%);
 	}
 
 	h0 {}
 
-	
+
 
 	.nav-buttons {
 		display: flex;
@@ -98,127 +97,138 @@
 		flex-direction: row-reverse;
 		gap: 16px;
 	}
-
-	
 </style>
 
 <body>
+	<stone-wnds></stone-wnds>
 	<h0></h0>
 	<br />
 	<audio id="bg-music" loop>
-        <source src="mw-menu-vanilla/blessing-of-vivec.mp3" type="audio/mpeg">
-    </audio>
-	<darkstone-user-interface>
+		<source src="mw-menu-vanilla/blessing-of-vivec.mp3" type="audio/mpeg">
+	</audio>
+	<stone-user-interface>
 		<nav>
 			<div class="nav-buttons">
-				<button type="button" id="mute-btn" class="darkstone-big-button" title="Mute">🔊Music</button>
-				<button type="button" id="new-box-btn" class="darkstone-big-button" title="Open new window">Lore Panel</button>
+				<button type="button" id="mute-btn" class="stone-big-button" title="Mute">Music</button>
+				<button type="button" id="new-box-btn" class="stone-big-button" title="Open new window">Lore
+					Panel</button>
 			</div>
 		</nav>
 		<template id="npc-wnd-template">
-			<!--<div class="darkstone-inner darkstone-inner-scroll" style="width: 100%;">-->
-				<div class="darkstone-stats-layout row">
-					<div class="darkstone-stats-left column">
-						<div class="darkstone-inner" style="padding: 3px;">
-							<div class="darkstone-stat-bar"><span class="darkstone-stat-label">Health</span><span class="darkstone-stat-value">61/78</span><div class="darkstone-stat-bar-track"><div class="darkstone-stat-bar-fill darkstone-stat-bar-health" style="width: 78%"></div></div></div>
-							<div class="darkstone-stat-bar"><span class="darkstone-stat-label">Magicka</span><span class="darkstone-stat-value">206/206</span><div class="darkstone-stat-bar-track"><div class="darkstone-stat-bar-fill darkstone-stat-bar-magicka" style="width: 100%"></div></div></div>
+			<!--<div class="stone-inner stone-inner-scroll" style="width: 100%;">-->
+			<div class="stone-stats-layout row">
+				<div class="stone-stats-left column">
+					<div class="stone-inner" style="padding: 3px;">
+						<div class="stone-stat-bar"><span class="stone-stat-label">Health</span><span
+								class="stone-stat-value">61/78</span>
+							<div class="stone-stat-bar-track">
+								<div class="stone-stat-bar-fill stone-stat-bar-health" style="width: 78%"></div>
+							</div>
 						</div>
-						<div class="darkstone-inner darkstone-stats-list" style="padding: 3px;">
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Level</span><span class="darkstone-stat-value">6</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Race</span><span class="darkstone-stat-value">Dark Elf</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Class</span><span class="darkstone-stat-value">Mage Warrior</span></div>
-						</div>
-						<div class="darkstone-inner darkstone-stats-list" style="padding: 3px;">
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Strength</span><span class="darkstone-stat-value">57</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Intelligence</span><span class="darkstone-stat-value">59</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Willpower</span><span class="darkstone-stat-value">41</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Agility</span><span class="darkstone-stat-value">50</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Speed</span><span class="darkstone-stat-value">40</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Endurance</span><span class="darkstone-stat-value">31</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Personality</span><span class="darkstone-stat-value">50</span></div>
-							<div class="darkstone-stat-row"><span class="darkstone-stat-label">Luck</span><span class="darkstone-stat-value">50</span></div>
+						<div class="stone-stat-bar"><span class="stone-stat-label">Magicka</span><span
+								class="stone-stat-value">206/206</span>
+							<div class="stone-stat-bar-track">
+								<div class="stone-stat-bar-fill stone-stat-bar-magicka" style="width: 100%">
+								</div>
+							</div>
 						</div>
 					</div>
-					<!--
-					<div class="darkstone-inner darkstone-stats-skills darkstone-inner-scroll" style="padding: 3px;">
-						<div class="darkstone-stats-skill-header">Major Skills:</div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Medium Armor</span><span class="darkstone-stat-value">42</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Conjuration</span><span class="darkstone-stat-value">15</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Destruction</span><span class="darkstone-stat-value">25</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Alteration</span><span class="darkstone-stat-value">20</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Mysticism</span><span class="darkstone-stat-value">18</span></div>
-						<div class="darkstone-menu-divider darkstone-menu-divider-h"></div>
-						<div class="darkstone-stats-skill-header">Minor Skills:</div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Heavy Armor</span><span class="darkstone-stat-value">15</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Enchant</span><span class="darkstone-stat-value">10</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Alchemy</span><span class="darkstone-stat-value">5</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Illusion</span><span class="darkstone-stat-value">10</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Restoration</span><span class="darkstone-stat-value">12</span></div>
-						<div class="darkstone-menu-divider darkstone-menu-divider-h"></div>
-						<div class="darkstone-stats-skill-header">Misc Skills:</div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Block</span><span class="darkstone-stat-value">5</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Armorer</span><span class="darkstone-stat-value">5</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Athletics</span><span class="darkstone-stat-value">28</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Acrobatics</span><span class="darkstone-stat-value">15</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Light Armor</span><span class="darkstone-stat-value">10</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Sneak</span><span class="darkstone-stat-value">5</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Marksman</span><span class="darkstone-stat-value">5</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Mercantile</span><span class="darkstone-stat-value">10</span></div>
-						<div class="darkstone-stat-row"><span class="darkstone-stat-label">Speechcraft</span><span class="darkstone-stat-value">15</span></div>
-					</div>-->
+					<div class="stone-inner stone-stats-list" style="padding: 3px;">
+						<div class="stone-stat-row"><span class="stone-stat-label">Level</span><span
+								class="stone-stat-value">6</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Race</span><span
+								class="stone-stat-value">Dark Elf</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Class</span><span
+								class="stone-stat-value">Mage Warrior</span></div>
+					</div>
+					<div class="stone-inner stone-stats-list" style="padding: 3px;">
+						<div class="stone-stat-row"><span class="stone-stat-label">Strength</span><span
+								class="stone-stat-value">57</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Intelligence</span><span
+								class="stone-stat-value">59</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Willpower</span><span
+								class="stone-stat-value">41</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Agility</span><span
+								class="stone-stat-value">50</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Speed</span><span
+								class="stone-stat-value">40</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Endurance</span><span
+								class="stone-stat-value">31</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Personality</span><span
+								class="stone-stat-value">50</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Luck</span><span
+								class="stone-stat-value">50</span></div>
+					</div>
 				</div>
+				<!--
+					<div class="stone-inner stone-stats-skills stone-inner-scroll" style="padding: 3px;">
+						<div class="stone-stats-skill-header">Major Skills:</div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Medium Armor</span><span class="stone-stat-value">42</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Conjuration</span><span class="stone-stat-value">15</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Destruction</span><span class="stone-stat-value">25</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Alteration</span><span class="stone-stat-value">20</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Mysticism</span><span class="stone-stat-value">18</span></div>
+						<div class="stone-menu-divider stone-menu-divider-h"></div>
+						<div class="stone-stats-skill-header">Minor Skills:</div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Heavy Armor</span><span class="stone-stat-value">15</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Enchant</span><span class="stone-stat-value">10</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Alchemy</span><span class="stone-stat-value">5</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Illusion</span><span class="stone-stat-value">10</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Restoration</span><span class="stone-stat-value">12</span></div>
+						<div class="stone-menu-divider stone-menu-divider-h"></div>
+						<div class="stone-stats-skill-header">Misc Skills:</div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Block</span><span class="stone-stat-value">5</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Armorer</span><span class="stone-stat-value">5</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Athletics</span><span class="stone-stat-value">28</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Acrobatics</span><span class="stone-stat-value">15</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Light Armor</span><span class="stone-stat-value">10</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Sneak</span><span class="stone-stat-value">5</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Marksman</span><span class="stone-stat-value">5</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Mercantile</span><span class="stone-stat-value">10</span></div>
+						<div class="stone-stat-row"><span class="stone-stat-label">Speechcraft</span><span class="stone-stat-value">15</span></div>
+					</div>-->
+			</div>
 			<!--</div>-->
 		</template>
-		<template id="darkstone-wnd-template">
-			<div class="darkstone-wnd" moveable resizeable closable minimizable title="Example">
-				<button type="button" class="darkstone-wnd-min" title="Min">
-					-
-				</button>
-				<button type="button" class="darkstone-wnd-close" title="Close">
-					x
-				</button>
-				<div class="darkstone-wnd-title">
+		<template id="stone-wnd-template">
+			<div class="stone-wnd" moveable resizeable closable minimizable title="Example">
+				<div class="stone-wnd-title">
 					<span>Wnd</span>
-				</div>
-				<div class="darkstone-wnd-content">
-					Dark Elves
-					<div style="display: flex; flex-direction: column;">
-						<div class="darkstone-inner darkstone-inner-scroll" style="hheight: 4em;">
-							Dunmer distrust and are treated distrustfully by other races. They are often proud,
-							clannish,
-							ruthless, and cruel, from an outsider's point of view, but greatly value loyalty and family.
-						</div>
-						<div style="display: flex; flex-direction: row; gap: 4px; margin-top: 4px; justify-content: flex-end;">
-							<button type="button" id="mute-btn" class="darkstone-big-button" title="Mute">No</button>
-							<button type="button" id="mute-btn" class="darkstone-big-button" title="Mute">Got
-								It</button>
-						</div>
+					<div style="display: flex; position: absolute; right: 0; white-space: nowrap;">
+						<button type="button" class="stone-title-bar-button min" title="Min">
+							-<!-- ⤥ -->
+						</button>
+						<button type="button" class="stone-title-bar-button close" title="Close">
+							x
+						</button>
 					</div>
-
+				</div>
+				<div class="stone-wnd-content">
+					Default-Content
 				</div>
 			</div>
 		</template>
 
-		<template id="darkstone-npc-wnd-content-template">
+		<template id="stone-npc-wnd-content-template">
 
 		</template>
 
-		<!--<div class="darkstone-wnd stats" title="Sheogorad!" style="width: 200px; min-height: 100px;">
-			<button type="button" class="darkstone-wnd-close" title="Close">
+		<!--<div class="stone-wnd stats" title="Sheogorad!" style="width: 200px; min-height: 100px;">
+			<button type="button" class="stone-wnd-close" title="Close">
 				x
 			</button>
-			<div class="darkstone-wnd-title">
+			<div class="stone-wnd-title">
 				<span>The Dunmer</span>
 			</div>
-			<div class="darkstone-wnd-content">
+			<div class="stone-wnd-content">
 				Dark Elves
-				<div class="darkstone-inner darkstone-inner-scroll" style="hheight: 4em;">
+				<div class="stone-inner stone-inner-scroll" style="hheight: 4em;">
 					Dunmer distrust and are treated distrustfully by other races. They are often proud, clannish,
 					ruthless, and cruel, from an outsider's point of view, but greatly value loyalty and family.
 				</div>
 			</div>
 		</div>-->
-		<div id="generationDialog" darkstone-user-interface>
+		<div id="generationDialog" stone-user-interface>
 			<h2>Sheogorad Options</h2>
 			<label for="islandName">Name for this generation:</label>
 			<input type="text" id="islandName" placeholder="Slavewind" value="Slavewind">
@@ -238,23 +248,22 @@
 			<button onclick="Sheogorad.generate()">Generate</button>
 		</div>
 
-		5
 		<div id="mainView" style="display:none;">
 			<div style="display:flex; gap:20px;">
-				<div class="darkstone-smooth" style="flex:2;;">
-					<div class="darkstone-inner">
+				<div class="stone-smooth" style="flex:2;;">
+					<div class="stone-inner">
 						<div class="explanator">Tree View:</div>
 						<div class="menuDividerH"></div>
-						<div id="genericList" class="darkstone-inner-scroll" style="">
+						<div id="genericList" class="stone-inner-scroll" style="">
 						</div>
 					</div>
 				</div>
 				<div id="mainViewArea" style="flex:2;">
-					
+
 				</div>
 			</div>
 		</div>
-	</darkstone-user-interface>
+	</stone-user-interface>
 
 	<script>
 		function generateIsland() {

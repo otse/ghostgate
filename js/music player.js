@@ -1,3 +1,5 @@
+// 🧙‍♀️ Code magic within
+
 import Sheogorad from "./sheogorad.js";
 import Wnd from "./wnd.js";
 

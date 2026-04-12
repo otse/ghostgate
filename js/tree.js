@@ -1,3 +1,5 @@
+// 🧙‍♀️ Code magic within
+
 export default class Tree {
 	constructor(items = [], options = {}) {
 		this.ul = document.createElement('ul');

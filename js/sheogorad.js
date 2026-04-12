@@ -1,3 +1,5 @@
+// 🧙‍♀️ Code magic within
+
 import Tree from './tree.js';
 import Map from './map.js';
 import Npc from './npc.js';
@@ -28,12 +30,12 @@ export const Sheogorad = {
 		await this.loadIconList();
 		this.setupEventListeners();
 
-		new Wnd('History', null, { width: 300, height: 150 });
+		// new Wnd('History', null, { width: 300, height: 150 });
 
 		Sheogorad.generate(); // We're cheating! Skip GenDiag!
 
 		this.lorePanel = new LorePanel();
-		this.musicPlayer = new MusicPlayer();
+		// this.musicPlayer = new MusicPlayer();
 
 		const bgMusic = document.getElementById('bg-music');
 		const muteBtn = document.getElementById('mute-btn');
@@ -58,12 +60,12 @@ export const Sheogorad = {
 			e.stopPropagation();
 			if (bgMusic.muted) {
 				bgMusic.muted = false;
-				muteBtn.textContent = '🔊 Music';
+				muteBtn.textContent = 'Music (On)';
 				muteBtn.classList.remove('muted');
 				muteBtn.title = 'Mute';
 			} else {
 				bgMusic.muted = true;
-				muteBtn.textContent = '🔇 Music';
+				muteBtn.textContent = 'Music (Off)';
 				muteBtn.classList.add('muted');
 				muteBtn.title = 'Unmute';
 			}
@@ -130,10 +132,10 @@ export const Sheogorad = {
 		this.populate();
 
 		// Search for npc of name X and make a wnd for them
-		const darvame = this.npcs.find(npc => npc.name === 'darvame_hleran');
-		if (darvame) {
-			darvame.makeWnd();
-			darvame.wnd.moveTo(30, 40);
+		const wulf = this.npcs.find(npc => npc.name === 'wulf');
+		if (wulf) {
+			wulf.makeWnd();
+			wulf.wnd.moveTo(30, 40);
 			// Problem wnd.wnd makes no sense
 		}
 

@@ -1,14 +1,13 @@
+// 🧙‍♀️ Code magic within
 
-let gridContainer;
+import Taskbar from './taskbar.js';
 
 function getGridRestriction() {
-	const vw = window.innerWidth;
-	const vh = window.innerHeight;
 	return {
 		left: 0,
 		top: 0,
-		right: vw,
-		bottom: vh
+		right: window.innerWidth,
+		bottom: window.innerHeight
 	};
 }
 function getTranslateAreaFor(rect) {
@@ -34,14 +33,14 @@ function getTranslateAreaFor(rect) {
 }
 
 function moveWithin(parent, el, x, y) {
-	const pw = parent.clientWidth;
-	const ph = parent.clientHeight;
+	const pw = parent.clientWidth / 2;
+	const ph = parent.clientHeight / 2;
 
 	const ew = el.offsetWidth;
 	const eh = el.offsetHeight;
 
-	const clampedX = Math.max(-pw/2, Math.min(x,( pw/2) - ew));
-	const clampedY = Math.max(-ph/2, Math.min(y, (ph/2) - eh));
+	const clampedX = Math.max(-pw, Math.min(x,( pw) - ew));
+	const clampedY = Math.max(-ph, Math.min(y, (ph) - eh));
 
 	console.warn('Cunt', [clampedX, clampedY]);
 	
@@ -105,9 +104,10 @@ export default class Wnd {
 		this.moveWithinTranslateTerritory(
 			-window.innerWidth, -window.innerHeight);
 		this.el.style.transition = 'transform 0.3s ease';
-
+		//
+		Taskbar.admitOne(this);
 		// Hide the content part, but keep the title bar visible for now
-		const contentContainer = this.el.querySelector('.darkstone-wnd-content');
+		const contentContainer = this.el.querySelector('.stone-wnd-content');
 		contentContainer.style.display = 'none';
 		// Squish the height of the window to just the title bar
 		this.el.style.width = '0px';
@@ -115,14 +115,16 @@ export default class Wnd {
 		this.el.style.minHeight = '0px';
 	}
 
-	maximize() { // Aka unminimize
+	maximize() {
 		if (!this.el) {
 			this.warnWindowDestroyed();
 			return;
 		}
+		//
+		Taskbar.removeOne(this);
 		this.moveTo(this.beforeMinXY.x, this.beforeMinXY.y);
 		this.el.removeAttribute('data-minimized');
-		const contentContainer = this.el.querySelector('.darkstone-wnd-content');
+		const contentContainer = this.el.querySelector('.stone-wnd-content');
 		// Reset to default styles, which should be defined in CSS
 		contentContainer.style.display = '';
 		this.el.style.height = '';
@@ -181,7 +183,7 @@ export default class Wnd {
 			this.warnWindowDestroyed();
 			return;
 		}
-		const contentContainer = this.el.querySelector('.darkstone-wnd-content');
+		const contentContainer = this.el.querySelector('.stone-wnd-content');
 		contentContainer.innerHTML = '';
 		if (content instanceof Node) {
 			contentContainer.appendChild(content);
@@ -192,20 +194,20 @@ export default class Wnd {
 
 
 	constructor(title, content, options = {}) {
-		const darkstoneUI = document.querySelector('darkstone-user-interface');
+		const darkstoneUI = document.querySelector('stone-user-interface');
 
-		const mwMenuTemplate = document.getElementById('darkstone-wnd-template');
+		const mwMenuTemplate = document.getElementById('stone-wnd-template');
 		const clone = mwMenuTemplate.content.cloneNode(true);
 
-		const dsWnd = clone.querySelector('.darkstone-wnd');
+		const dsWnd = clone.querySelector('.stone-wnd');
 		this.el = dsWnd;
 
 		dsWnd.style.width = (options.width || 200) + 'px';
 		dsWnd.style.height = (options.height || 200) + 'px';
 
-		dsWnd.querySelector('.darkstone-wnd-title').innerHTML = `<span>${title}</span>`;
+		dsWnd.querySelector('.stone-wnd-title span').innerHTML = `${title}`;
 
-		const contentContainer = dsWnd.querySelector('.darkstone-wnd-content');
+		const contentContainer = dsWnd.querySelector('.stone-wnd-content');
 
 		if (content)
 			contentContainer.innerHTML	 = content;
@@ -227,12 +229,12 @@ export default class Wnd {
 
 		// Problem This is a quick and dirty z-index hack
 		dsWnd.addEventListener('mousedown', () => {
-			document.querySelectorAll('.darkstone-wnd').forEach((box) => box.classList.remove('active'));
+			document.querySelectorAll('.stone-wnd').forEach((box) => box.classList.remove('active'));
 			dsWnd.classList.add('active');
 		});
 
 		if (dsWnd.hasAttribute('minimizable')) {
-			const minBtn = dsWnd.querySelector('.darkstone-wnd-min');
+			const minBtn = dsWnd.querySelector('.stone-title-bar-button.min');
 			minBtn.addEventListener('click', (e) => {
 				e.stopPropagation();
 				Sheogorad.playClickSound();
@@ -240,7 +242,7 @@ export default class Wnd {
 			});
 		}
 		if (dsWnd.hasAttribute('closable')) {
-			const closeBtn = dsWnd.querySelector('.darkstone-wnd-close');
+			const closeBtn = dsWnd.querySelector('.stone-title-bar-button.close');
 			const removePressed = () => {
 				closeBtn.classList.remove('pressed');
 				document.removeEventListener('mouseup', removePressed);
@@ -260,7 +262,7 @@ export default class Wnd {
 		}
 		if (dsWnd.hasAttribute('moveable')) {
 			interactable.draggable({
-				allowFrom: '.darkstone-wnd-title',
+				allowFrom: '.stone-wnd-title',
 				modifiers: [
 					interact.modifiers.restrictRect({
 						restriction: getGridRestriction,
@@ -288,18 +290,18 @@ export default class Wnd {
 
 		RESIZE_HANDLES.forEach((edge) => {
 			const handle = document.createElement('div');
-			handle.className = `darkstone-wnd-resize-handle darkstone-wnd-resize-${edge}`;
+			handle.className = `stone-wnd-resize-handle stone-wnd-resize-${edge}`;
 			dsWnd.appendChild(handle);
 		});
 
 		if (dsWnd.hasAttribute('resizeable')) {
 			interactable.resizable({
-				allowFrom: '.darkstone-wnd-resize-handle',
+				allowFrom: '.stone-wnd-resize-handle',
 				edges: {
-					top: '.darkstone-wnd-resize-n, .darkstone-wnd-resize-ne, .darkstone-wnd-resize-nw',
-					left: '.darkstone-wnd-resize-w, .darkstone-wnd-resize-nw, .darkstone-wnd-resize-sw',
-					bottom: '.darkstone-wnd-resize-s, .darkstone-wnd-resize-se, .darkstone-wnd-resize-sw',
-					right: '.darkstone-wnd-resize-e, .darkstone-wnd-resize-ne, .darkstone-wnd-resize-se',
+					top: '.stone-wnd-resize-n, .stone-wnd-resize-ne, .stone-wnd-resize-nw',
+					left: '.stone-wnd-resize-w, .stone-wnd-resize-nw, .stone-wnd-resize-sw',
+					bottom: '.stone-wnd-resize-s, .stone-wnd-resize-se, .stone-wnd-resize-sw',
+					right: '.stone-wnd-resize-e, .stone-wnd-resize-ne, .stone-wnd-resize-se',
 				},
 				modifiers: [
 					interact.modifiers.restrictSize({
